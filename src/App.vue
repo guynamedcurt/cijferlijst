@@ -68,28 +68,8 @@ export default {
   },
   computed: {
     average: function computeAverage() {
-      return Math.round (this.cijfers.reduce((sum, e) => sum + e.nummer, 0) / this.cijfers.filter(el => el.nummer != null || el.nummer != isNaN).length * 10) / 10;
+      return Math.round (this.cijfers.reduce((sum, e) => sum + e.nummer, 0) / this.cijfers.filter(el => el.nummer != null).length * 10) / 10;
     },
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-.success {
-  background-color: green;
-}
-.failure {
-  background-color: red;
-}
-.blank {
-  background-color: darkgray;
-}
-</style>

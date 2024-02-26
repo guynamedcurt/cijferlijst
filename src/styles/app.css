@@ -7,3 +7,21 @@
     * {@apply text-gray-800;}
     input {@apply border;}
 }
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+}
+.success {
+    background-color: green;
+}
+.failure {
+background-color: red;
+}
+.blank {
+background-color: darkgray;
+}
