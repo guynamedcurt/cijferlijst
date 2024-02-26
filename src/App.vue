@@ -92,7 +92,4 @@ export default {
 .blank {
   background-color: darkgray;
 }
-.tableWidth {
-  width: 15%;
-}
 </style>
