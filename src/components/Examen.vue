@@ -13,7 +13,6 @@
                 this.$emit('verwijderId', this.index)
             },
             verander($event){
-                console.log('verander', this.index, this.nummer, '>', $event.target.value)
                 if ($event.target.value != undefined || $event.target.value != null || $event.target.value != '') {
                     this.$emit('veranderId', this.index, $event.target.value)       //vuur event af
                 }

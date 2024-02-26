@@ -49,13 +49,11 @@ export default {
         nummer: parseFloat(this.newCijferInvul),
       };
 
-      console.log(this.newExamenInvul + " en " + this.newCijferInvul);
       this.cijfers.push(newCijfer);
       this.newExamenInvul = "";
       this.newCijferInvul = "";
     },
     verwijderId: function(index){
-      console.log(index + "Werkt!!");
       this.cijfers.splice(index, 1);
     }
   },
@@ -70,8 +68,6 @@ export default {
   },
   computed: {
     average: function computeAverage() {
-      console.log(this.cijfers.reduce((sum, e) => sum + e.nummer, 0), this.cijfers.filter(el => el.nummer != null).length, this.cijfers.reduce((sum, e) => sum + e.nummer, 0) / this.cijfers.filter(el => el.nummer != null).length, Math.round(this.cijfers.reduce((sum, e) => sum + e.nummer, 0) / this.cijfers.filter(el => el.nummer != null).length * 10) / 10);
-      console.log (this.cijfers.reduce((sum, e) => sum + e.nummer, 0) / this.cijfers.filter(el => el.nummer != null).length);
       return Math.round (this.cijfers.reduce((sum, e) => sum + e.nummer, 0) / this.cijfers.filter(el => el.nummer != null || el.nummer != isNaN).length * 10) / 10;
     },
   }
