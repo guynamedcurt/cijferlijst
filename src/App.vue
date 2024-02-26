@@ -68,7 +68,7 @@ export default {
   },
   computed: {
     average: function computeAverage() {
-      return Math.round (this.cijfers.reduce((sum, e) => sum + e.nummer, 0) / this.cijfers.filter(el => el.nummer != null || el.nummer != isNaN).length * 10) / 10;
+      return Math.round (this.cijfers.reduce((sum, e) => sum + e.nummer, 0) / this.cijfers.filter(el => el.nummer != null).length * 10) / 10;
     },
   }
 }
