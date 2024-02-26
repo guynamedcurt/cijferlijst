@@ -13,6 +13,7 @@
                 this.$emit('verwijderId', this.index)
             },
             verander($event){
+                $event.target.value = $event.target.value.replace(/,/g, ".");
                 if ($event.target.value != undefined || $event.target.value != null || $event.target.value != '') {
                     this.$emit('veranderId', this.index, $event.target.value)       //vuur event af
                 }
