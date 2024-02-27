@@ -25,3 +25,12 @@ background-color: red;
 .blank {
 background-color: darkgray;
 }
+.tableName {
+width: 20vw;
+}
+.tableGrade {
+width: 5vw;
+}
+.tableButton {
+width: 1vw;
+}

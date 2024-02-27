@@ -1,7 +1,7 @@
 <template>
     <tr :id="index" :class="classGrade">
-        <td style="width:20vw">{{ examen }}</td><td style="width:5vw"><input type="text" :value="nummer" @keyup='verander'/></td>
-        <td style="width:1vw"><button @click="verwijder">X</button></td>
+        <td class="tableName">{{ examen }}</td><td class="tableGrade"><input type="text" :value="nummer" @keyup='verander'/></td>
+        <td class="tableButton"><button @click="verwijder">X</button></td>
     </tr>
 </template>
 <script>
