@@ -92,7 +92,13 @@ export default {
 .blank {
   background-color: darkgray;
 }
-.tableWidth {
-  width: 15%;
+.tableName {
+  width: 20vw;
+}
+.tableGrade {
+  width: 5vw;
+}
+.tableButton {
+  width: 1vw;
 }
 </style>
