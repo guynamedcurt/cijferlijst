@@ -8,7 +8,7 @@
       <examen-lijst v-for="(e,index) in cijfers" @veranderId="veranderId" @verwijderId="verwijderId" :key="index"
             :index = "index"
             :examen = "e.examen"
-            :nummer = "e.nummer"
+            :cijfer = "e.cijfer"
             >
       </examen-lijst>
     </table>
@@ -24,29 +24,30 @@
       </td>
     </form>
     <br>
-    <span>Gemiddelde: {{ average }} ({{ this.cijfers.filter(el => el.nummer != null).length }} cijfers)</span>
+    <span>Gemiddelde: {{ average }} ({{ this.cijfers.filter(el => el.cijfer != null).length }} cijfers)</span>
   </div>
 </template>
 
 <script>
 import ExamenLijst from './components/Examen'
+import axios from 'axios'
 export default {
   components: {
     ExamenLijst
   },
   methods: {
-    veranderId(index, nummer){
-      this.cijfers[index].nummer= null;
-      if (isNaN(parseFloat(nummer))) {
-        this.cijfers[index].nummer = null;
+    veranderId(index, cijfer){
+      this.cijfers[index].cijfer= null;
+      if (isNaN(parseFloat(cijfer))) {
+        this.cijfers[index].cijfer = null;
       } else {
-        this.cijfers[index].nummer = parseFloat(nummer);
+        this.cijfers[index].cijfer = parseFloat(cijfer);
       }
     },
     addCijfer() {
       const newCijfer = {
         examen: this.newExamenInvul,
-        nummer: parseFloat(this.newCijferInvul),
+        cijfer: parseFloat(this.newCijferInvul),
       };
 
       this.cijfers.push(newCijfer);
@@ -55,21 +56,33 @@ export default {
     },
     verwijderId: function(index){
       this.cijfers.splice(index, 1);
+    },
+    fetchData() {
+      axios.get('http://localhost:8000/api/cijfers')
+        .then(response => {
+          this.cijfers = response.data.map(item => ({
+            examen: item.examen,
+            cijfer: item.cijfer !== null ? parseFloat(item.cijfer) : null
+          }));        
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
     }
   },
   data () {
     return {
-      cijfers: [{ examen:"Frontend Development", nummer:null},
-          {examen:"Webdevelopment", nummer:7.5},
-          {examen:"Mobile Application Development", nummer:4.5},
-          {examen:"Stage 1", nummer:6.1},
-          {examen:"Stage 2", nummer:null}]
+      cijfers: []
     }
   },
   computed: {
     average: function computeAverage() {
-      return Math.round (this.cijfers.reduce((sum, e) => sum + e.nummer, 0) / this.cijfers.filter(el => el.nummer != null).length * 10) / 10;
+      console.log(this.cijfers)
+      return Math.round (this.cijfers.reduce((sum, e) => sum + e.cijfer, 0) / this.cijfers.filter(el => el.cijfer != null).length * 10) / 10;
     },
+  },
+  created() {
+    this.fetchData();
   }
 }
 </script>

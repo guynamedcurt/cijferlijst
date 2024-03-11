@@ -1,13 +1,13 @@
 <template>
     <tr :id="index" :class="classGrade">
-        <td class="tableName">{{ examen }}</td><td class="tableGrade"><input type="text" :value="nummer" @keyup='verander'/></td>
+        <td class="tableName">{{ examen }}</td><td class="tableGrade"><input type="text" :value="cijfer" @keyup='verander'/></td>
         <td class="tableButton"><button @click="verwijder">X</button></td>
     </tr>
 </template>
 <script>
     export default {
         name: 'ExamenLijst', // element <Examen>
-        props: ['index', 'examen', 'nummer'], //gegevens van het element
+        props: ['index', 'examen', 'cijfer'], //gegevens van het element
         methods:{
             verwijder: function(){
                 this.$emit('verwijderId', this.index)
@@ -22,9 +22,9 @@
         computed: {
             classGrade() {
                 return {
-                    'success': this.nummer >= 5.5 && this.nummer <= 10.0,
-                    'failure': this.nummer >= 0.1 && this.nummer <= 5.4,
-                    'blank': this.nummer == '' || this.nummer == null
+                    'success': this.cijfer >= 5.5 && this.cijfer <= 10.0,
+                    'failure': this.cijfer >= 0.1 && this.cijfer <= 5.4,
+                    'blank': this.cijfer == '' || this.cijfer == null
                 }
             }
         }
