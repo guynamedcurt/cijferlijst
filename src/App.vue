@@ -4,7 +4,7 @@
   </h1>
   <div>
     <table>
-      <tr><td bgcolor="gray">Examen</td><td bgcolor="gray">Cijfer</td></tr>
+      <tr><td class="bg-gray-500">Examen</td><td class="bg-gray-500">Cijfer</td></tr>
       <examen-lijst v-for="(e,index) in cijfers" @veranderId="veranderId" @verwijderId="verwijderId" :key="index"
             :index = "index"
             :examen = "e.examen"
@@ -13,11 +13,11 @@
       </examen-lijst>
     </table>
     <form @submit.prevent="addCijfer()">
-      <td>
+      <td class="bg-blue-400">
         <label for="examenInvul">Examen:</label>
         <input id="examenInvul" type="text" v-model="newExamenInvul" required/>
       </td>
-      <td>
+      <td class="bg-blue-400">
         <label for="cijferInvul">Cijfer:</label>
         <input id="cijferInvul" type="text" v-model="newCijferInvul"/>
         <button type="submit">Submit</button>
@@ -31,6 +31,7 @@
 <script>
 import ExamenLijst from './components/Examen'
 import axios from 'axios'
+import './styles/app.css'
 export default {
   components: {
     ExamenLijst
@@ -77,7 +78,6 @@ export default {
   },
   computed: {
     average: function computeAverage() {
-      console.log(this.cijfers)
       return Math.round (this.cijfers.reduce((sum, e) => sum + e.cijfer, 0) / this.cijfers.filter(el => el.cijfer != null).length * 10) / 10;
     },
   },

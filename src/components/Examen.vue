@@ -22,9 +22,9 @@
         computed: {
             classGrade() {
                 return {
-                    'success': this.cijfer >= 5.5 && this.cijfer <= 10.0,
-                    'failure': this.cijfer >= 0.1 && this.cijfer <= 5.4,
-                    'blank': this.cijfer == '' || this.cijfer == null
+                    'bg-green-500': this.cijfer >= 5.5 && this.cijfer <= 10.0,
+                    'bg-red-600': this.cijfer >= 0.1 && this.cijfer <= 5.4,
+                    'bg-stone-500': this.cijfer == '' || this.cijfer == null
                 }
             }
         }
